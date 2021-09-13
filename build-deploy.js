@@ -52,7 +52,7 @@ execSync(`git commit -m "Version : ${latestIndex} being deployed"`,{
 //ended setting up to deploy to heroku
 
 //start deploying to heroku//
-execSync(`git push heroku master`,{
+execSync(`git push heroku master --force`,{
     cwd: path.join(__dirname,"dist"),
     stdio: 'inherit'
 });
