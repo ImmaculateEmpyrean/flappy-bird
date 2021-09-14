@@ -1,0 +1,41 @@
+.heading1 {
+	font-family: "Titillium Web", sans-serif;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 48px;
+	line-height: 73px;
+
+	text-align: center;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+
+	color: #312f2f;
+}
+
+.heading2 {
+	font-family: "Titillium Web", sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 55px;
+
+	letter-spacing: 0.08em;
+	text-transform: capitalize;
+
+	color: #312f2f;
+}
+
+.text {
+	font-family: "Titillium Web", sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 37px;
+
+	letter-spacing: 0.05em;
+	color: #312f2f;
+
+	strong {
+		font-weight: 600;
+	}
+}
