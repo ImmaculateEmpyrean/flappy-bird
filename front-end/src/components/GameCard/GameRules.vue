@@ -7,8 +7,10 @@
 			<li class="collection-item">
 				<p class="text">
 					Your bird gains downward speed as it falls, but will always flap up by
-					the same height–just enough to stay between the two pipes. (press the
-					<strong>SPACE</strong> key makes the bird flap its wings.)
+					the same height–just enough to stay between the two pipes. (pressing
+					the
+					<strong>SPACE</strong> key or touching the
+					<strong>Screen</strong> makes the bird flap its wings.)
 				</p>
 			</li>
 			<li class="collection-item">
