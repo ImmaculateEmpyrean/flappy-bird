@@ -3,6 +3,7 @@
 		<div class="container">
 			<h1 class="heading1">Flappy Bird Online</h1>
 			<div id="app-wrapper">
+				<InputFieldCard />
 				<GameCard />
 				<ScoreCard />
 			</div>
@@ -12,8 +13,13 @@
 </template>
 
 <script>
+import M from "materialize-css";
+
 import GameCard from "./components/GameCard/GameCard.vue";
 import ScoreCard from "./components/ScoreCard/ScoreCard.vue";
+
+import InputFieldCard from "./components/InputFieldCard.vue";
+
 import Footer from "./components/Footer.vue";
 
 export default {
@@ -22,6 +28,10 @@ export default {
 		GameCard,
 		ScoreCard,
 		Footer,
+		InputFieldCard,
+	},
+	mounted() {
+		M.AutoInit();
 	},
 };
 </script>
