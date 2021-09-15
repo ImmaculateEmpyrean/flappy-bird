@@ -7,8 +7,6 @@ let theme1; //  original theme
 let theme2; //  original them v2
 let bg; //  background
 let bird; //  bird: yellow
-// let bird1; //  bird: red
-// let bird2; //  bird: blue
 let pipes; //  top and bottom pipes
 let ground; //  ground floor
 let getReady; //  get ready screen
@@ -234,7 +232,7 @@ pipes = {
 					b.top < p.top.bottom &&
 					b.bottom > p.top.top
 				) {
-					gameState.current = gameState.gameOver;
+					setGameOver();
 					SFX_COLLISION.play();
 				}
 				//collision with bottom pipe
@@ -244,7 +242,7 @@ pipes = {
 					b.top < p.bot.bottom &&
 					b.bottom > p.bot.top
 				) {
-					gameState.current = gameState.gameOver;
+					setGameOver();
 					SFX_COLLISION.play();
 				}
 			}
@@ -390,7 +388,7 @@ score = {
 
 			//if current score has thousands place value: the game is over
 			if (this.current >= 1000) {
-				gameState.current = gameState.gameOver;
+				setGameOver();
 
 				//if current score has ones, tens, and hundreds place value only
 			} else if (this.current >= 100) {
@@ -573,7 +571,7 @@ bird = {
 				}
 				//then the game is over
 				if (gameState.current == gameState.play) {
-					gameState.current = gameState.gameOver;
+					setGameOver();
 					SFX_FALL.play();
 				}
 			}
@@ -724,3 +722,13 @@ document.body.addEventListener("keydown", (e) => {
 		}
 	}
 });
+
+function setGameOver() {
+	let gameOverEvent = new CustomEvent("game:over", {
+		detail: {
+			score: score.current,
+		},
+	});
+	window.dispatchEvent(gameOverEvent);
+	gameState.current = gameState.gameOver;
+}

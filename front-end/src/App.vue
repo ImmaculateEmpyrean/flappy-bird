@@ -3,7 +3,10 @@
 		<div class="container">
 			<h1 class="heading1">Flappy Bird Online</h1>
 			<div id="app-wrapper">
-				<InputFieldCard />
+				<InputFieldCard
+					@playerName:changed="playerNameChanged"
+					@playerCountryCode:changed="playerCountryCodeChanged"
+				/>
 				<GameCard />
 				<ScoreCard />
 			</div>
@@ -27,6 +30,26 @@ export default {
 		ScoreCard,
 		Footer,
 		InputFieldCard,
+	},
+	data() {
+		return {
+			playerName: "noName",
+			playerCountryCode: "noCountry",
+		};
+	},
+	methods: {
+		playerNameChanged(newName) {
+			this.playerName = newName;
+		},
+		playerCountryCodeChanged(newCode) {
+			this.playerCountryCode = newCode;
+		},
+	},
+	provide() {
+		return {
+			playerName: this.playerName,
+			playerCountryCode: this.playerCountryCode,
+		};
 	},
 };
 </script>

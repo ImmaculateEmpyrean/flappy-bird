@@ -14,6 +14,11 @@ app.listen(port, function () {
 	console.log(`server running on port ${port}`);
 });
 
-app.get('/',function(req,res){
-	res.sendFile(path.resolve(__dirname,'www/index.html'));
+app.get("/", function (req, res) {
+	res.sendFile(path.resolve(__dirname, "www/index.html"));
+});
+
+app.post("/newScore", function (req, res) {
+	console.log(req.body);
+	res.status(200).send("success!");
 });

@@ -1,12 +1,12 @@
 <template>
 	<div id="InputFieldCard-wrapper" class="row card">
 		<div class="input-field col s6">
-			<input id="last_name" type="text" class="validate" />
+			<input id="last_name" type="text" class="validate" v-model="playerName" />
 			<label for="last_name" id="nameLabel">Name</label>
 		</div>
 
 		<div class="input-field col s6 heading3">
-			<select>
+			<select v-model="playerCountryCode">
 				<option value="" disabled selected>Select Your Country</option>
 				<option
 					value="AD"
@@ -591,6 +591,22 @@ export default {
 		instances.forEach((instance) => {
 			instance.input.style.fontFamily = '"Titillium Web", sans-serif';
 		});
+	},
+	data() {
+		return {
+			playerName: null,
+			playerCountryCode: null,
+		};
+	},
+	watch: {
+		playerName() {
+			console.log("player name has changed to ", this.playerName);
+			this.$emit("playerName:changed", this.playerName);
+		},
+		playerCountryCode() {
+			console.log("player country has changed to ", this.playerCountryCode);
+			this.$emit("playerCountryCode:changed", this.playerCountryCode);
+		},
 	},
 };
 </script>
