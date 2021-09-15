@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import M from "materialize-css";
-
 import GameCard from "./components/GameCard/GameCard.vue";
 import ScoreCard from "./components/ScoreCard/ScoreCard.vue";
 
@@ -29,9 +27,6 @@ export default {
 		ScoreCard,
 		Footer,
 		InputFieldCard,
-	},
-	mounted() {
-		M.AutoInit();
 	},
 };
 </script>
