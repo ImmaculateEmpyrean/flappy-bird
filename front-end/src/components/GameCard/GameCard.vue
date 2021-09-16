@@ -1,6 +1,6 @@
 <template>
 	<div id="GameCard-wrapper" class="card">
-		<GameCanvas />
+		<GameCanvas @newScore="recievedNewScore" />
 		<GameRules />
 	</div>
 </template>
@@ -14,6 +14,11 @@ export default {
 	components: {
 		GameCanvas,
 		GameRules,
+	},
+	methods: {
+		recievedNewScore(newScoreObject) {
+			this.$emit("newScore", newScoreObject);
+		},
 	},
 };
 </script>

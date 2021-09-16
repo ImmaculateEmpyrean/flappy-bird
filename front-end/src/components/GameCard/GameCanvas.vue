@@ -27,12 +27,13 @@ export default {
 					}
 					return;
 				}
-				axios.post("/newScore", {
+				let newScoreObject = {
 					score: e.detail.score,
 					playerName: this.playerName,
 					playerCountryCode: this.playerCountryCode,
-					test: "test",
-				});
+				};
+				this.$emit("newScore", newScoreObject);
+				axios.post("/newScore", newScoreObject);
 			}.bind(this)
 		);
 	},

@@ -7,7 +7,7 @@
 					@playerName:changed="playerNameChanged"
 					@playerCountryCode:changed="playerCountryCodeChanged"
 				/>
-				<GameCard />
+				<GameCard @newScore="newScoreRecieved" />
 				<ScoreCard />
 			</div>
 		</div>
@@ -35,6 +35,9 @@ export default {
 		return {
 			playerName: "noName",
 			playerCountryCode: "noCountry",
+			newScoreObject: {
+				newScoreObject: null,
+			},
 		};
 	},
 	methods: {
@@ -44,11 +47,17 @@ export default {
 		playerCountryCodeChanged(newCode) {
 			this.playerCountryCode = newCode;
 		},
+		newScoreRecieved(newScoreObject) {
+			this.newScoreObject.newScoreObject = newScoreObject;
+			this.newScoreObject.newScoreObject.playerName = this.playerName;
+			this.newScoreObject.newScoreObject.playerCountryCode = this.playerCountryCode;
+		},
 	},
 	provide() {
 		return {
 			playerName: this.playerName,
 			playerCountryCode: this.playerCountryCode,
+			newScoreObject: this.newScoreObject,
 		};
 	},
 };

@@ -5,12 +5,12 @@
 			<tbody>
 				<!-- start only row -->
 				<tr>
-					<td class="text">{{ sessionHighScore.name }}</td>
+					<td class="text">{{ sessionHighScore.playerName }}</td>
 					<td class="text">{{ sessionHighScore.score }}</td>
 					<td>
 						<img
 							:src="
-								`https://www.countryflags.io/${sessionHighScore.countryCode}/flat/64.png`
+								`https://www.countryflags.io/${sessionHighScore.playerCountryCode}/flat/64.png`
 							"
 						/>
 					</td>
@@ -22,20 +22,37 @@
 </template>
 
 <script>
+// import _ from "lodash";
+
 export default {
 	name: "HighScoreThisSession",
-	props: {
-		sessionHighScore: {
-			type: Object,
-			default: function() {
-				return {
-					name: "Null",
-					score: 0,
-					countryCode: "Null",
-					country: "Nill",
-				};
+	inject: ["newScoreObject"],
+	data() {
+		return {
+			sessionHighScore: {
+				playerName: "Null",
+				score: 0,
+				playerCountryCode: "Null",
 			},
+		};
+	},
+	watch: {
+		newScoreObject: {
+			handler(newVal) {
+				if ("score" in this.sessionHighScore) {
+					if (this.sessionHighScore.score < newVal.newScoreObject.score) {
+						this.sessionHighScore = newVal.newScoreObject;
+						console.log(this.sessionHighScore);
+					} else {
+						console.log("did not update score");
+					}
+				}
+			},
+			deep: true,
 		},
+	},
+	mounted() {
+		//console.log(this.newScoreObject);
 	},
 };
 </script>
