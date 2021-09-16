@@ -14,12 +14,12 @@
 				<!-- start first row -->
 				<tr>
 					<td class="text">1.</td>
-					<td class="text">{{ highScoreOne.name }}</td>
+					<td class="text">{{ highScoreOne.playerName }}</td>
 					<td class="text">{{ highScoreOne.score }}</td>
 					<td>
 						<img
 							:src="
-								`https://www.countryflags.io/${highScoreOne.countryCode}/flat/64.png`
+								`https://www.countryflags.io/${highScoreOne.playerCountryCode}/flat/64.png`
 							"
 						/>
 					</td>
@@ -29,12 +29,12 @@
 				<!-- start second row -->
 				<tr>
 					<td class="text">2.</td>
-					<td class="text">{{ highScoreTwo.name }}</td>
+					<td class="text">{{ highScoreTwo.playerName }}</td>
 					<td class="text">{{ highScoreTwo.score }}</td>
 					<td>
 						<img
 							:src="
-								`https://www.countryflags.io/${highScoreTwo.countryCode}/flat/64.png`
+								`https://www.countryflags.io/${highScoreTwo.playerCountryCode}/flat/64.png`
 							"
 						/>
 					</td>
@@ -44,12 +44,12 @@
 				<!-- start third row -->
 				<tr>
 					<td class="text">3.</td>
-					<td class="text">{{ highScoreThree.name }}</td>
+					<td class="text">{{ highScoreThree.playerName }}</td>
 					<td class="text">{{ highScoreThree.score }}</td>
 					<td>
 						<img
 							:src="
-								`https://www.countryflags.io/${highScoreThree.countryCode}/flat/64.png`
+								`https://www.countryflags.io/${highScoreThree.playerCountryCode}/flat/64.png`
 							"
 						/>
 					</td>
@@ -59,12 +59,12 @@
 				<!-- start fourth row -->
 				<tr>
 					<td class="text">4.</td>
-					<td class="text">{{ highScoreFour.name }}</td>
+					<td class="text">{{ highScoreFour.playerName }}</td>
 					<td class="text">{{ highScoreFour.score }}</td>
 					<td>
 						<img
 							:src="
-								`https://www.countryflags.io/${highScoreFour.countryCode}/flat/64.png`
+								`https://www.countryflags.io/${highScoreFour.playerCountryCode}/flat/64.png`
 							"
 						/>
 					</td>
@@ -74,12 +74,12 @@
 				<!-- start fifth row -->
 				<tr>
 					<td class="text">5.</td>
-					<td class="text">{{ highScoreFive.name }}</td>
+					<td class="text">{{ highScoreFive.playerName }}</td>
 					<td class="text">{{ highScoreFive.score }}</td>
 					<td>
 						<img
 							:src="
-								`https://www.countryflags.io/${highScoreFive.countryCode}/flat/64.png`
+								`https://www.countryflags.io/${highScoreFive.playerCountryCode}/flat/64.png`
 							"
 						/>
 					</td>
@@ -93,62 +93,54 @@
 <script>
 export default {
 	name: "HighScore",
-	props: {
-		highScoreOne: {
-			type: Object,
-			default: function() {
+	data() {
+		return {
+			highScoreOne: function() {
 				return {
-					name: "John",
-					score: 100,
-					countryCode: "US",
-					country: "United States Of America",
+					playerName: "noName",
+					playerCountry: "noCountry",
+					score: 0,
 				};
 			},
-		},
-		highScoreTwo: {
-			type: Object,
-			default: function() {
+			highScoreTwo: function() {
 				return {
-					name: "Aiyla",
-					score: 85,
-					countryCode: "TR",
-					country: "Turkey",
+					playerName: "noName",
+					playerCountry: "noCountry",
+					score: 0,
 				};
 			},
-		},
-		highScoreThree: {
-			type: Object,
-			default: function() {
+			highScoreThree: function() {
 				return {
-					name: "Seo-jun",
-					score: 70,
-					countryCode: "KR",
-					country: "Republic of Korea",
+					playerName: "noName",
+					playerCountry: "noCountry",
+					score: 0,
 				};
 			},
-		},
-		highScoreFour: {
-			type: Object,
-			default: function() {
+			highScoreFour: function() {
 				return {
-					name: "Jean",
-					score: 60,
-					countryCode: "FR",
-					country: "France",
+					playerName: "noName",
+					playerCountry: "noCountry",
+					score: 0,
 				};
 			},
-		},
-		highScoreFive: {
-			type: Object,
-			default: function() {
+			highScoreFive: function() {
 				return {
-					name: "Tobias",
-					score: 50,
-					countryCode: "AT",
-					country: "Austria",
+					playerName: "noName",
+					playerCountry: "noCountry",
+					score: 0,
 				};
 			},
-		},
+		};
+	},
+	async created() {
+		let axios = require("axios");
+		let result = await axios.get("/highScores");
+
+		this.highScoreOne = result.data[0];
+		this.highScoreTwo = result.data[1];
+		this.highScoreThree = result.data[2];
+		this.highScoreFour = result.data[3];
+		this.highScoreFive = result.data[4];
 	},
 };
 </script>
