@@ -132,15 +132,22 @@ export default {
 			},
 		};
 	},
-	async created() {
-		let axios = require("axios");
-		let result = await axios.get("/highScores");
+	methods: {
+		async refreshHighScoresFromServer() {
+			let axios = require("axios");
+			let result = await axios.get("/highScores");
 
-		this.highScoreOne = result.data[0];
-		this.highScoreTwo = result.data[1];
-		this.highScoreThree = result.data[2];
-		this.highScoreFour = result.data[3];
-		this.highScoreFive = result.data[4];
+			this.highScoreOne = result.data[0];
+			this.highScoreTwo = result.data[1];
+			this.highScoreThree = result.data[2];
+			this.highScoreFour = result.data[3];
+			this.highScoreFive = result.data[4];
+		},
+	},
+	async created() {
+		let a = "test";
+		console.log(a);
+		await this.refreshHighScoresFromServer();
 	},
 };
 </script>

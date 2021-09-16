@@ -2,8 +2,8 @@
 	<div id="ScoreCard-wrapper" class="card">
 		<h2 class="heading2 center">Score Card</h2>
 		<div class="inner-wrapper">
-			<HighScore />
-			<HighScoreThisSession />
+			<HighScore ref="highScore" />
+			<HighScoreThisSession @newLocalHighScore="$emit('newLocalHighScore')" />
 		</div>
 	</div>
 </template>

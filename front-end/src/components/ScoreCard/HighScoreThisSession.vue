@@ -42,6 +42,7 @@ export default {
 				if ("score" in this.sessionHighScore) {
 					if (this.sessionHighScore.score <= newVal.newScoreObject.score) {
 						this.sessionHighScore = newVal.newScoreObject;
+						this.$emit("newLocalHighScore");
 					} else {
 						console.log("did not update score");
 					}

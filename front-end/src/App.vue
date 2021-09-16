@@ -7,8 +7,11 @@
 					@playerName:changed="playerNameChanged"
 					@playerCountryCode:changed="playerCountryCodeChanged"
 				/>
-				<GameCard @newScore="newScoreRecieved" />
-				<ScoreCard />
+				<GameCard
+					@newScore="newScoreRecieved"
+					@newLocalHighScore="handleNewLocalHighScore"
+				/>
+				<ScoreCard ref="scoreCard" />
 			</div>
 		</div>
 		<Footer />
@@ -51,6 +54,9 @@ export default {
 			this.newScoreObject.newScoreObject = newScoreObject;
 			this.newScoreObject.newScoreObject.playerName = this.playerName;
 			this.newScoreObject.newScoreObject.playerCountryCode = this.playerCountryCode;
+		},
+		handleNewLocalHighScore() {
+			this.$refs.scoreCard.$refs.highScore.refreshHighScoresFromServer();
 		},
 	},
 	provide() {
