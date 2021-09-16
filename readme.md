@@ -4,7 +4,7 @@
 
 ### The central **Database** (a single file) is used to store and display **HIGHSCORES** to all players around the world.
 
-### This Website is hosted live at the url: [flappy-bird](https://bird-flap-game.herokuapp.com/)
+### This Website is hosted live at the url: https://bird-flap-game.herokuapp.com/
 
 ---
 
