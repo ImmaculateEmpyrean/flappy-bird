@@ -14,12 +14,13 @@ export default {
 		require("../../js/game.js");
 		window.addEventListener(
 			"game:over",
-			function(e) {
+			async function(e) {
 				let newScore = {
 					score: e.detail.score,
 				};
 				this.$emit("newScore", newScore);
-				axios.post("/newScore", this.newScoreObject);
+				await axios.post("/newScore", this.newScoreObject);
+				this.$emit("postedNewScoreToServer");
 			}.bind(this)
 		);
 	},

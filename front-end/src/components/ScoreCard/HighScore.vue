@@ -145,8 +145,6 @@ export default {
 		},
 	},
 	async created() {
-		let a = "test";
-		console.log(a);
 		await this.refreshHighScoresFromServer();
 	},
 };

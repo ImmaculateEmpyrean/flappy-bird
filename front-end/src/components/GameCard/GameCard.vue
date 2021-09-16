@@ -1,6 +1,9 @@
 <template>
 	<div id="GameCard-wrapper" class="card">
-		<GameCanvas @newScore="recievedNewScore" />
+		<GameCanvas
+			@newScore="recievedNewScore"
+			@postedNewScoreToServer="$emit('postedNewScoreToServer')"
+		/>
 		<GameRules />
 	</div>
 </template>

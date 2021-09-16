@@ -10,6 +10,7 @@
 				<GameCard
 					@newScore="newScoreRecieved"
 					@newLocalHighScore="handleNewLocalHighScore"
+					@postedNewScoreToServer="handlePostedNewScoreToServer"
 				/>
 				<ScoreCard ref="scoreCard" />
 			</div>
@@ -41,6 +42,7 @@ export default {
 			newScoreObject: {
 				newScoreObject: null,
 			},
+			refreshHighScoreTable: false,
 		};
 	},
 	methods: {
@@ -56,6 +58,11 @@ export default {
 			this.newScoreObject.newScoreObject.playerCountryCode = this.playerCountryCode;
 		},
 		handleNewLocalHighScore() {
+			this.refreshHighScoreTable = true;
+			console.log("set to true");
+		},
+		handlePostedNewScoreToServer() {
+			this.refreshHighScoreTable = false;
 			this.$refs.scoreCard.$refs.highScore.refreshHighScoresFromServer();
 		},
 	},
