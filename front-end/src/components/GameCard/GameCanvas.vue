@@ -9,31 +9,17 @@ import axios from "axios";
 
 export default {
 	name: "GameCanvas",
-	inject: ["playerName", "playerCountryCode"],
+	inject: ["newScoreObject"],
 	mounted() {
 		require("../../js/game.js");
 		window.addEventListener(
 			"game:over",
 			function(e) {
-				if (this.playerName === null || this.playerCountryCode === null) {
-					if (this.playerName === null)
-						console.log(
-							"not posting results to the server as player name is null"
-						);
-					if (this.playerCountryCode === null) {
-						console.log(
-							"not posting results to the server as playerCountryCode is null"
-						);
-					}
-					return;
-				}
-				let newScoreObject = {
+				let newScore = {
 					score: e.detail.score,
-					playerName: this.playerName,
-					playerCountryCode: this.playerCountryCode,
 				};
-				this.$emit("newScore", newScoreObject);
-				axios.post("/newScore", newScoreObject);
+				this.$emit("newScore", newScore);
+				axios.post("/newScore", this.newScoreObject);
 			}.bind(this)
 		);
 	},

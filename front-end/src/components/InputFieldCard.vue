@@ -600,11 +600,9 @@ export default {
 	},
 	watch: {
 		playerName() {
-			console.log("player name has changed to ", this.playerName);
 			this.$emit("playerName:changed", this.playerName);
 		},
 		playerCountryCode() {
-			console.log("player country has changed to ", this.playerCountryCode);
 			this.$emit("playerCountryCode:changed", this.playerCountryCode);
 		},
 	},

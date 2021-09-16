@@ -40,9 +40,8 @@ export default {
 		newScoreObject: {
 			handler(newVal) {
 				if ("score" in this.sessionHighScore) {
-					if (this.sessionHighScore.score < newVal.newScoreObject.score) {
+					if (this.sessionHighScore.score <= newVal.newScoreObject.score) {
 						this.sessionHighScore = newVal.newScoreObject;
-						console.log(this.sessionHighScore);
 					} else {
 						console.log("did not update score");
 					}
